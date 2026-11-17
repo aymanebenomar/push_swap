@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_helper.c                                   :+:      :+:    :+:   */
+/*   parsing_helpers.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenomar <abenomar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 14:11:47 by abenomar          #+#    #+#             */
-/*   Updated: 2026/11/17 15:37:15 by abenomar         ###   ########.fr       */
+/*   Updated: 2026/11/17 17:26:27 by abenomar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,4 @@ void	free_split(char **arr)
 		i++;
 	}
 	free(arr);
-}
-
-void	error_exit(t_stack **a, char **arr)
-{
-	free_stack(a);
-	free_split(arr);
-	write(2, "Error\n", 6);
-	exit(1);
 }

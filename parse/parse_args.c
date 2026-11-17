@@ -6,11 +6,19 @@
 /*   By: abenomar <abenomar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 14:11:50 by abenomar          #+#    #+#             */
-/*   Updated: 2026/11/17 16:50:06 by abenomar         ###   ########.fr       */
+/*   Updated: 2026/11/17 17:26:22 by abenomar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	error_exit(t_stack **a, char **arr)
+{
+	free_stack(a);
+	free_split(arr);
+	write(2, "Error\n", 6);
+	exit(1);
+}
 
 int	to_int(char *s, int *out)
 {
