@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_checker.c                                  :+:      :+:    :+:   */
+/*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenomar <abenomar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 14:11:50 by abenomar          #+#    #+#             */
-/*   Updated: 2026/11/17 15:36:58 by abenomar         ###   ########.fr       */
+/*   Updated: 2026/11/17 16:50:06 by abenomar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		has_duplicate(t_stack *a, int n)
 	return (0);
 }
 
-t_stack	*parse_args(int ac, char **av, t_flags *f)
+t_stack	*parse_args(int ac, char **av)
 {
 	t_stack	*a;
 	char	**arr;
@@ -69,8 +69,6 @@ t_stack	*parse_args(int ac, char **av, t_flags *f)
 	{
 		if (av[i][0] == '-' && av[i][1] == '-')
 		{
-			if (!parse_flag(av[i], f))
-				error_exit(&a, NULL);
 			i++;
 			continue;
 		}

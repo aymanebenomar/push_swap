@@ -38,7 +38,7 @@ int		add_bottom(t_stack **a, int n);
 void	free_stack(t_stack **a);
 void	free_split(char **arr);
 void	error_exit(t_stack **a, char **arr);
-int		parse_flag(char *arg, t_flags *f);
-t_stack	*parse_args(int ac, char **av, t_flags *f);
+int		parse_flags(int ac, char **av, t_flags *f);
+t_stack	*parse_args(int ac, char **av);
 
 #endif
