@@ -1,5 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_checker.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abenomar <abenomar@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/17 14:11:50 by abenomar          #+#    #+#             */
+/*   Updated: 2026/11/17 15:16:38 by abenomar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <limits.h>
 #include "push_swap.h"
 
 int ft_isdigit(char c)
@@ -37,4 +47,54 @@ int is_valid_number(char *s)
 	if (s[i])
 		return (0);
 	return (1);
+}
+
+int		has_duplicate(t_stack *a, int n)
+{
+	while (a)
+	{
+		if (a->value == n)
+			return (1);
+		a = a->next;
+	}
+	return (0);
+}
+
+t_stack	*parse_args(int ac, char **av)
+{
+	t_stack	*a;
+	char	**arr;
+	int		i;
+	int		j;
+	int		n;
+
+	i = 1;
+	a = NULL;
+	while (i < ac)
+	{
+		if (av[i][0] == '-' && av[i][1] == '-')
+		{
+			i++;
+			continue;
+		}
+		arr = ft_split(av[i], ' ');
+		if (!arr || !arr[0])
+			error_exit(&a, arr);
+		j = 0;
+		while (arr[j])
+		{
+			if (!is_valid_number(arr[j]))
+				error_exit(&a, arr);
+			if (!to_int(arr[j], &n))
+				error_exit(&a, arr);
+			if (has_duplicate(a, n))
+				error_exit(&a, arr);
+			if (!add_bottom(&a, n))
+				error_exit(&a, arr);
+			j++;
+		}
+		free_split(arr);
+		i++;
+	}
+	return (a);
 }
