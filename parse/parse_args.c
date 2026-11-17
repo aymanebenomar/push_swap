@@ -6,16 +6,11 @@
 /*   By: abenomar <abenomar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 14:11:50 by abenomar          #+#    #+#             */
-/*   Updated: 2026/11/17 15:16:38 by abenomar         ###   ########.fr       */
+/*   Updated: 2026/11/17 15:36:58 by abenomar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int ft_isdigit(char c)
-{
-	return (c >= '0' && c <= '9');
-}
 
 int	to_int(char *s, int *out)
 {
@@ -60,7 +55,7 @@ int		has_duplicate(t_stack *a, int n)
 	return (0);
 }
 
-t_stack	*parse_args(int ac, char **av)
+t_stack	*parse_args(int ac, char **av, t_flags *f)
 {
 	t_stack	*a;
 	char	**arr;
@@ -74,6 +69,8 @@ t_stack	*parse_args(int ac, char **av)
 	{
 		if (av[i][0] == '-' && av[i][1] == '-')
 		{
+			if (!parse_flag(av[i], f))
+				error_exit(&a, NULL);
 			i++;
 			continue;
 		}

@@ -6,7 +6,7 @@
 /*   By: abenomar <abenomar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 14:11:47 by abenomar          #+#    #+#             */
-/*   Updated: 2026/11/17 14:24:35 by abenomar         ###   ########.fr       */
+/*   Updated: 2026/11/17 15:37:15 by abenomar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,5 @@ void	error_exit(t_stack **a, char **arr)
 	free_stack(a);
 	free_split(arr);
 	write(2, "Error\n", 6);
+	exit(1);
 }
