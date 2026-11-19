@@ -72,4 +72,7 @@ void	reverse_rotate(t_stack **s);
 // execution
 void	exec_op(t_ctx *ctx, t_op op);
 
+// indexing
+void	assign_index(t_stack *a);
+
 #endif

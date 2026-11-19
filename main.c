@@ -30,7 +30,7 @@ void	print_stack(char *name, t_stack *s)
 	printf("%s: ", name);
 	while (s)
 	{
-		printf("%d ", s->value);
+		printf("value %d | rank %d\n", s->value, s->index);
 		s = s->next;
 	}
 	printf("\n");
@@ -55,9 +55,15 @@ int	main(int ac, char **av)
 	exec_op(&ctx, SB);
 	exec_op(&ctx, RR);
 	exec_op(&ctx, PA);
+	exec_op(&ctx, PA);
+
+	assign_index(ctx.a);
+	assign_index(ctx.b);
+
 	print_stack("a", ctx.a);
 	print_stack("b", ctx.b);
 	printf("pb count: %d\n", ctx.counts[PB]);
+	printf("pa count: %d\n", ctx.counts[PA]);
 	free_stack(&ctx.a);
 	free_stack(&ctx.b);
 	return (0);
