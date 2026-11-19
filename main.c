@@ -1,7 +1,4 @@
-
-#include "push_swap.h"
-
-int main(int ac, char **av)
+/* int main(int ac, char **av)
 {
 	t_flags f;
 	t_stack *a;
@@ -23,5 +20,45 @@ int main(int ac, char **av)
 	}
 	printf("bench -> %d  strategy -> %d", f.bench, f.strategy);
 	free_stack(&a);
+	return (0);
+} */
+
+#include "push_swap.h"
+
+void	print_stack(char *name, t_stack *s)
+{
+	printf("%s: ", name);
+	while (s)
+	{
+		printf("%d ", s->value);
+		s = s->next;
+	}
+	printf("\n");
+}
+
+int	main(int ac, char **av)
+{
+	t_ctx	ctx;
+
+	if (ac < 2)
+		return (0);
+	ctx.b = NULL;
+	ft_bzero(ctx.counts, sizeof(ctx.counts));
+	if (parse_flags(ac, av, &ctx.flags) == -1)
+	{
+		write(2, "Error\n", 6);
+		return (1);
+	}
+	ctx.a = parse_args(ac, av);
+	exec_op(&ctx, PB);
+	exec_op(&ctx, PB);
+	exec_op(&ctx, SB);
+	exec_op(&ctx, RR);
+	exec_op(&ctx, PA);
+	print_stack("a", ctx.a);
+	print_stack("b", ctx.b);
+	printf("pb count: %d\n", ctx.counts[PB]);
+	free_stack(&ctx.a);
+	free_stack(&ctx.b);
 	return (0);
 }
