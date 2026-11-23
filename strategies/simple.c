@@ -6,7 +6,7 @@
 /*   By: abenomar <abenomar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/23 14:37:45 by abenomar          #+#    #+#             */
-/*   Updated: 2026/11/23 14:58:01 by abenomar         ###   ########.fr       */
+/*   Updated: 2026/11/23 15:54:29 by abenomar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,47 @@ int	min_pos(t_stack *a)
 		a = a->next;
 	}
 	return (best);
+}
+
+void	rotate_to_top(t_ctx *ctx, int pos, int size)
+{
+	int	i;
+
+	if (pos <= size / 2)
+	{
+		i = 0;
+		while (i < pos)
+		{
+			exec_op(ctx, RA);
+			i++;
+		}
+	}
+	else
+	{
+		i = 0;
+		while (i < size - pos)
+		{
+			exec_op(ctx, RRA);
+			i++;
+		}
+	}
+}
+
+void	sort_simple(t_ctx *ctx)
+{
+	int	size;
+	int	minpos;
+
+	if (!ctx)
+		return ;
+	size = stack_size(ctx->a);
+	while (size > 1 && !is_sorted(ctx->a))
+	{
+		minpos = min_pos(ctx->a);
+		rotate_to_top(ctx, minpos, size);
+		exec_op(ctx, PB);
+		size--;
+	}
+	while (ctx->b)
+		exec_op(ctx, PA);
 }

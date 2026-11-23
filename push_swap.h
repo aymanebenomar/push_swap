@@ -85,4 +85,10 @@ int		is_sorted(t_stack *a);
 // strategies
 int		min_pos(t_stack *a);
 
+// -------------------------------------------------
+// algos 
+void	rotate_to_top(t_ctx *ctx, int pos, int size);
+void	sort_simple(t_ctx *ctx);
+
+
 #endif
