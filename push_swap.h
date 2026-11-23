@@ -75,4 +75,14 @@ void	exec_op(t_ctx *ctx, t_op op);
 // indexing
 void	assign_index(t_stack *a);
 
+// disorder
+double	compute_disorder(t_stack *a);
+
+// utils
+int		stack_size(t_stack *a);
+int		is_sorted(t_stack *a);
+
+// strategies
+int		min_pos(t_stack *a);
+
 #endif
