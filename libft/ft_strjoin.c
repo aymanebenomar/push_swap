@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abenomar <abenomar@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: sfaraji <sfaraji@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/15 21:52:12 by abenomar          #+#    #+#             */
-/*   Updated: 2026/10/20 22:13:46 by abenomar         ###   ########.fr       */
+/*   Created: 2026/10/12 16:02:23 by sfaraji           #+#    #+#             */
+/*   Updated: 2026/10/12 16:02:24 by sfaraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,20 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	len;
-	size_t	i;
-	size_t	x;
-	char	*p;
+	size_t	nlen;
+	size_t	s1len;
+	size_t	s2len;
+	char	*str;
 
 	if (!s1 || !s2)
 		return (NULL);
-	len = ft_strlen(s1) + ft_strlen(s2);
-	p = malloc((len + 1) * sizeof(char));
-	if (!p)
+	s1len = ft_strlen(s1);
+	s2len = ft_strlen(s2);
+	nlen = s1len + s2len;
+	str = malloc(nlen + 1);
+	if (!str)
 		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		p[i] = s1[i];
-		i++;
-	}
-	x = 0;
-	while (s2[x])
-	{
-		p[i + x] = s2[x];
-		x++;
-	}
-	p[i + x] = '\0';
-	return (p);
+	ft_memcpy(str, s1, s1len);
+	ft_memcpy(str + s1len, s2, s2len + 1);
+	return (str);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abenomar <abenomar@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: sfaraji <sfaraji@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/17 21:10:41 by abenomar          #+#    #+#             */
-/*   Updated: 2026/10/20 23:18:39 by abenomar         ###   ########.fr       */
+/*   Created: 2026/10/13 13:22:25 by sfaraji           #+#    #+#             */
+/*   Updated: 2026/10/13 14:26:22 by sfaraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int	len;
+	int	size;
 
-	len = 0;
-	while (lst)
+	size = 0;
+	while (lst != NULL)
 	{
-		len++;
+		size++;
 		lst = lst->next;
 	}
-	return (len);
+	return (size);
 }

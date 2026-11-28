@@ -1,36 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   s_utils.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenomar <abenomar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/23 16:10:07 by abenomar          #+#    #+#             */
-/*   Updated: 2026/11/23 16:10:08 by abenomar         ###   ########.fr       */
+/*   Created: 2026/11/15 18:29:18 by sfaraji           #+#    #+#             */
+/*   Updated: 2026/11/27 16:56:36 by abenomar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+int	stack_size(t_stack *stack)
 {
-	t_ctx	ctx;
+	int	n;
 
-	if (ac < 2)
-		return (0);
-	ctx.b = NULL;
-	ft_bzero(ctx.counts, sizeof(ctx.counts));
-	if (parse_flags(ac, av, &ctx.flags) == -1)
+	n = 0;
+	while (stack)
 	{
-		write(2, "Error\n", 6);
-		return (1);
+		n++;
+		stack = stack->next;
 	}
-	ctx.a = parse_args(ac, av);
-	assign_index(ctx.a);
-	sort_simple(&ctx);
+	return (n);
+}
 
-	//print_stack("simple", ctx.a);
-	free_stack(&ctx.a);
-	free_stack(&ctx.b);
-	return (0);
+int	is_sorted(t_stack *stack)
+{
+	while (stack && stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
+int	ft_isqrt(int n)
+{
+	int	r;
+
+	r = 0;
+	while (r + 1 <= n / (r + 1))
+		r++;
+	return (r);
 }

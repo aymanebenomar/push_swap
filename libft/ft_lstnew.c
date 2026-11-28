@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abenomar <abenomar@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: sfaraji <sfaraji@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/17 16:43:31 by abenomar          #+#    #+#             */
-/*   Updated: 2026/10/18 00:47:06 by abenomar         ###   ########.fr       */
+/*   Created: 2026/10/13 09:44:52 by sfaraji           #+#    #+#             */
+/*   Updated: 2026/10/13 11:05:49 by sfaraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*node;
 
+	node = NULL;
 	node = malloc(sizeof(t_list));
 	if (!node)
 		return (NULL);
